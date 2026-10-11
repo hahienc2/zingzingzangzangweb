@@ -63,17 +63,17 @@ export default function Home() {
               <p>Zing Zing Zang Zang là studio phát triển game và sản phẩm tương tác dành cho trẻ em — vui nhộn, giàu hình ảnh và luôn khơi gợi trí tò mò.</p>
               <div className="hero-actions">
                 <a className="btn btn-primary" href="#san-pham">Khám phá sản phẩm <ArrowRight size={19} /></a>
-                <a className="btn btn-white" href="#ve-studio"><Play size={17} fill="currentColor" /> Gặp đội ngũ Zing</a>
+                <a className="btn btn-white" href="#ve-studio"><Play size={17} fill="currentColor" /> Gặp đội ngũ Ziza</a>
               </div>
               <div className="hero-tags">
                 <span><Gamepad2 /> Game giáo dục</span><span><Palette /> Thiết kế thân thiện</span><span><MapPin /> Hà Nội</span>
               </div>
             </div>
-            <div className="hero-art" aria-label="Mèo Zing, nhân vật đại diện của studio">
+            <div className="hero-art" aria-label="Mèo Ziza, nhân vật đại diện của studio">
               <span className="art-star star-one">★</span><span className="art-star star-two">✦</span><span className="art-dot dot-one" /><span className="art-dot dot-two" />
               <div className="hero-sun" /><div className="hero-ring" />
-              <Image className="hero-cat" src="/images/zing-cat.png" alt="Mèo Zing đang đọc sách" width={1254} height={1254} priority />
-              <div className="hello-card"><span>👋</span><div><strong>Xin chào, mình là Zing!</strong><small>Cùng chơi, cùng học nhé.</small></div></div>
+              <Image className="hero-cat" src="/images/zing-cat.png" alt="Mèo Ziza đang đọc sách" width={1254} height={1254} priority />
+              <div className="hello-card"><span>👋</span><div><strong>Xin chào, mình là Ziza!</strong><small>Cùng chơi, cùng học nhé.</small></div></div>
             </div>
           </div>
           <div className="hero-hill hill-back" /><div className="hero-hill hill-front" />
@@ -124,7 +124,7 @@ export default function Home() {
                 <ul>
                   <li><CheckCircle2 /> Hình ảnh trực quan, dễ ghi nhớ</li>
                   <li><CheckCircle2 /> Cách chơi đơn giản, thân thiện</li>
-                  <li><CheckCircle2 /> Đồng hành cùng mascot mèo Zing</li>
+                  <li><CheckCircle2 /> Đồng hành cùng mascot mèo Ziza</li>
                 </ul>
                 <a className="btn btn-yellow" href="https://www.zingzingzangzang.com/#trang-chu" target="_blank" rel="noreferrer">Mở Flashcards <ArrowRight size={19} /></a>
               </div>
