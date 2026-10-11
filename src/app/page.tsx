@@ -3,47 +3,35 @@
 import Image from 'next/image';
 import {useState} from 'react';
 import {
-  ArrowRight, BookOpen, Check, ChevronRight, Gamepad2, Headphones, Heart,
-  Menu, MousePointer2, Play, ShieldCheck, Sparkles, Star, Volume2, X,
+  ArrowRight, BookOpen, Brain, CheckCircle2, ChevronRight, Gamepad2,
+  Heart, Lightbulb, Mail, MapPin, Menu, Palette, Play, Rocket,
+  ShieldCheck, Sparkles, Star, Users, X,
 } from 'lucide-react';
 
-const learningSteps = [
-  {icon: BookOpen, number: '01', title: 'Nhìn hình', description: 'Bắt đầu với hình ảnh lớn, gần gũi và đầy màu sắc.', tone: 'red'},
-  {icon: Headphones, number: '02', title: 'Nghe từ', description: 'Làm quen với âm thanh và cách phát âm tiếng Anh.', tone: 'blue'},
-  {icon: Gamepad2, number: '03', title: 'Chơi vui', description: 'Ghi nhớ tự nhiên qua những thử thách nhỏ thú vị.', tone: 'green'},
+const values = [
+  {icon: Heart, title: 'Niềm vui dẫn đường', text: 'Mỗi sản phẩm bắt đầu từ câu hỏi: làm thế nào để người chơi muốn khám phá thêm?', tone: 'red'},
+  {icon: Lightbulb, title: 'Học qua trải nghiệm', text: 'Kiến thức được đưa vào trò chơi một cách tự nhiên, dễ hiểu và vừa sức.', tone: 'yellow'},
+  {icon: ShieldCheck, title: 'Thân thiện với trẻ nhỏ', text: 'Hình ảnh trong sáng, thao tác rõ ràng và trải nghiệm phù hợp với lứa tuổi.', tone: 'green'},
 ];
 
-const sampleCards = [
-  {emoji: '🍎', word: 'Apple', meaning: 'Quả táo', tone: 'card-red'},
-  {emoji: '🐝', word: 'Bee', meaning: 'Chú ong', tone: 'card-blue'},
-  {emoji: '⭐', word: 'Star', meaning: 'Ngôi sao', tone: 'card-yellow'},
-  {emoji: '🌳', word: 'Tree', meaning: 'Cái cây', tone: 'card-green'},
-];
-
-const experiences = [
-  {emoji: '🎯', title: 'Đoán từ bí mật', text: 'Nhìn hình và chọn từ đúng.'},
-  {emoji: '🔗', title: 'Nối cặp thật nhanh', text: 'Ghép từ tiếng Anh với hình ảnh.'},
-  {emoji: '🧠', title: 'Lật thẻ trí nhớ', text: 'Tìm các cặp thẻ giống nhau.'},
-  {emoji: '🎧', title: 'Nghe và chọn', text: 'Lắng nghe rồi tìm đúng đáp án.'},
+const process = [
+  {number: '01', title: 'Lắng nghe', text: 'Tìm hiểu điều trẻ thích và điều phụ huynh quan tâm.'},
+  {number: '02', title: 'Thử nghiệm', text: 'Biến bài học thành những vòng chơi ngắn, trực quan.'},
+  {number: '03', title: 'Chăm chút', text: 'Hoàn thiện hình ảnh, âm thanh và từng phản hồi nhỏ.'},
+  {number: '04', title: 'Cùng lớn lên', text: 'Tiếp tục cải thiện sản phẩm từ trải nghiệm thực tế.'},
 ];
 
 function Brand({footer = false}: {footer?: boolean}) {
   return (
-    <a className={`brand ${footer ? 'brand-footer' : ''}`} href="#trang-chu" aria-label="Zing Zing Zang Zang Flashcards - Trang chủ">
-      <span className="brand-logo-wrap">
-        <Image src="/images/zingzing-logo.jpg" alt="" width={56} height={56} priority={!footer} />
-      </span>
-      <span className="brand-copy">
-        <strong>Zing Zing<br />Zang Zang</strong>
-        <small>FLASHCARDS</small>
-      </span>
+    <a className={`brand ${footer ? 'brand-footer' : ''}`} href="#trang-chu" aria-label="Zing Zing Zang Zang - Trang chủ">
+      <span className="brand-logo-wrap"><Image src="/images/zingzing-logo.jpg" alt="" width={58} height={58} priority={!footer} /></span>
+      <span className="brand-copy"><strong>Zing Zing<br />Zang Zang</strong><small>GAME STUDIO</small></span>
     </a>
   );
 }
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeCard, setActiveCard] = useState(0);
   const closeMenu = () => setMenuOpen(false);
 
   return (
@@ -53,13 +41,13 @@ export default function Home() {
           <Brand />
           <nav className={`nav-links ${menuOpen ? 'nav-open' : ''}`} aria-label="Điều hướng chính">
             <a onClick={closeMenu} href="#trang-chu">Trang chủ</a>
-            <a onClick={closeMenu} href="#cach-hoc">Cách học</a>
-            <a onClick={closeMenu} href="#bo-the">Bộ thẻ</a>
-            <a onClick={closeMenu} href="#tro-choi">Trò chơi</a>
-            <a onClick={closeMenu} href="#ve-chung-minh">Về chúng mình</a>
+            <a onClick={closeMenu} href="#ve-studio">Về studio</a>
+            <a onClick={closeMenu} href="#san-pham">Sản phẩm</a>
+            <a onClick={closeMenu} href="#cach-lam-game">Cách làm game</a>
+            <a onClick={closeMenu} href="#lien-he">Liên hệ</a>
           </nav>
-          <a className="nav-cta" href="#bo-the">Khám phá ngay <ArrowRight size={17} /></a>
-          <button className="menu-toggle" onClick={() => setMenuOpen((value) => !value)} aria-label={menuOpen ? 'Đóng menu' : 'Mở menu'} aria-expanded={menuOpen}>
+          <a className="nav-cta" href="#san-pham">Xem sản phẩm <ArrowRight size={17} /></a>
+          <button className="menu-toggle" onClick={() => setMenuOpen((open) => !open)} aria-label={menuOpen ? 'Đóng menu' : 'Mở menu'} aria-expanded={menuOpen}>
             {menuOpen ? <X /> : <Menu />}
           </button>
         </div>
@@ -67,123 +55,139 @@ export default function Home() {
 
       <main>
         <section id="trang-chu" className="hero">
-          <div className="cloud cloud-one" /><div className="cloud cloud-two" />
-          <div className="container hero-inner">
-            <div className="hero-banner-frame">
-              <Image className="hero-banner" src="/images/zingzing-banner.png" alt="Mèo Zing vui học cùng bộ thẻ Apple, Bee, Star và Tree" width={1794} height={876} priority />
-              <div className="hero-shine" />
-            </div>
-            <div className="hero-message">
-              <span className="eyebrow"><Sparkles size={16} /> HỌC TỪ MỚI THEO CÁCH THẬT VUI</span>
-              <h1>Mỗi tấm thẻ,<br /><span>một điều kỳ diệu!</span></h1>
-              <p>Cùng mèo Zing nhìn hình, nghe từ và chơi những trò chơi nhỏ để tiếng Anh trở thành niềm vui mỗi ngày.</p>
+          <div className="hero-cloud cloud-left" /><div className="hero-cloud cloud-right" />
+          <div className="container hero-grid">
+            <div className="hero-copy">
+              <span className="eyebrow"><Sparkles size={16} /> GAME STUDIO TẠI HÀ NỘI, VIỆT NAM</span>
+              <h1>Chúng mình làm game<br />để mỗi giờ học thành<br /><span>một cuộc phiêu lưu.</span></h1>
+              <p>Zing Zing Zang Zang là studio phát triển game và sản phẩm tương tác dành cho trẻ em — vui nhộn, giàu hình ảnh và luôn khơi gợi trí tò mò.</p>
               <div className="hero-actions">
-                <a className="btn btn-primary" href="#bo-the">Mở bộ thẻ đầu tiên <ArrowRight size={19} /></a>
-                <a className="btn btn-white" href="#cach-hoc"><Play size={17} fill="currentColor" /> Xem cách học</a>
+                <a className="btn btn-primary" href="#san-pham">Khám phá sản phẩm <ArrowRight size={19} /></a>
+                <a className="btn btn-white" href="#ve-studio"><Play size={17} fill="currentColor" /> Gặp đội ngũ Zing</a>
               </div>
-              <div className="safe-note"><ShieldCheck size={18} /> Nội dung trong sáng, thân thiện với trẻ nhỏ</div>
+              <div className="hero-tags">
+                <span><Gamepad2 /> Game giáo dục</span><span><Palette /> Thiết kế thân thiện</span><span><MapPin /> Hà Nội</span>
+              </div>
+            </div>
+            <div className="hero-art" aria-label="Mèo Zing, nhân vật đại diện của studio">
+              <span className="art-star star-one">★</span><span className="art-star star-two">✦</span><span className="art-dot dot-one" /><span className="art-dot dot-two" />
+              <div className="hero-sun" /><div className="hero-ring" />
+              <Image className="hero-cat" src="/images/zing-cat.png" alt="Mèo Zing đang đọc sách" width={1254} height={1254} priority />
+              <div className="hello-card"><span>👋</span><div><strong>Xin chào, mình là Zing!</strong><small>Cùng chơi, cùng học nhé.</small></div></div>
             </div>
           </div>
-          <div className="grass grass-back" /><div className="grass grass-front" />
+          <div className="hero-hill hill-back" /><div className="hero-hill hill-front" />
         </section>
 
-        <section className="quick-benefits" aria-label="Điểm nổi bật">
-          <div className="container benefit-grid">
-            <div><span className="benefit-icon orange"><BookOpen /></span><p><strong>Dễ nhìn, dễ nhớ</strong><small>Minh họa sinh động</small></p></div>
-            <div><span className="benefit-icon blue"><Volume2 /></span><p><strong>Nghe và làm quen</strong><small>Học bằng nhiều giác quan</small></p></div>
-            <div><span className="benefit-icon green"><Heart /></span><p><strong>Mỗi ngày một chút</strong><small>Nuôi dưỡng hứng thú học tập</small></p></div>
+        <section className="studio-strip" aria-label="Giới thiệu nhanh">
+          <div className="container strip-grid">
+            <div><span className="strip-icon blue"><Gamepad2 /></span><p><strong>Studio game sáng tạo</strong><small>Ý tưởng nhỏ, thế giới lớn</small></p></div>
+            <div><span className="strip-icon red"><Heart /></span><p><strong>Dành cho trẻ em</strong><small>Vui vẻ, gần gũi, dễ tiếp cận</small></p></div>
+            <div><span className="strip-icon green"><MapPin /></span><p><strong>Made in Hà Nội</strong><small>Việt Nam</small></p></div>
           </div>
         </section>
 
-        <section id="cach-hoc" className="section how-section">
+        <section id="ve-studio" className="section about-section">
+          <div className="container about-layout">
+            <div className="about-visual">
+              <div className="logo-card"><Image src="/images/zingzing-logo.jpg" alt="Logo Zing Zing Zang Zang" width={512} height={512} /></div>
+              <span className="float-card card-games"><Gamepad2 /><strong>Play</strong></span>
+              <span className="float-card card-learn"><BookOpen /><strong>Learn</strong></span>
+              <span className="float-card card-grow"><Rocket /><strong>Grow</strong></span>
+            </div>
+            <div className="about-copy">
+              <span className="section-kicker">VỀ ZING ZING ZANG ZANG</span>
+              <h2>Một studio nhỏ với<br /><span>những giấc mơ đầy màu sắc.</span></h2>
+              <p>Chúng mình là một studio game tại Hà Nội, tập trung xây dựng những trải nghiệm số tích cực cho trẻ em và gia đình.</p>
+              <p>Ở Zing Zing Zang Zang, game không chỉ để giải trí. Đó còn là nơi bé được quan sát, thử nghiệm, ghi nhớ và tự tin khám phá thế giới theo nhịp riêng của mình.</p>
+              <div className="about-note"><Star fill="currentColor" /><div><strong>Sứ mệnh của chúng mình</strong><span>Biến việc học thành một trải nghiệm đáng mong chờ mỗi ngày.</span></div></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="san-pham" className="section products-section">
+          <div className="container">
+            <div className="section-heading light-heading">
+              <span className="section-kicker">SẢN PHẨM CỦA STUDIO</span>
+              <h2>Những thế giới nhỏ<br /><span>do chúng mình tạo nên.</span></h2>
+              <p>Mỗi sản phẩm là một cách mới để trẻ vừa chơi, vừa học và tìm thấy niềm vui trong việc khám phá.</p>
+            </div>
+            <article className="featured-product">
+              <div className="product-image-wrap">
+                <Image className="product-banner" src="/images/zingzing-banner.png" alt="Banner ứng dụng Zing Zing Zang Zang Flashcards" width={1794} height={876} />
+                <span className="product-badge">SẢN PHẨM ĐẦU TIÊN</span>
+              </div>
+              <div className="product-copy">
+                <span className="product-type"><BookOpen size={17} /> ỨNG DỤNG HỌC TƯƠNG TÁC</span>
+                <h3>Zing Zing Zang Zang<br /><span>Flashcards</span></h3>
+                <p>Ứng dụng giúp trẻ làm quen với từ vựng tiếng Anh qua hình ảnh sinh động, âm thanh và những hoạt động ngắn đầy màu sắc.</p>
+                <ul>
+                  <li><CheckCircle2 /> Hình ảnh trực quan, dễ ghi nhớ</li>
+                  <li><CheckCircle2 /> Cách chơi đơn giản, thân thiện</li>
+                  <li><CheckCircle2 /> Đồng hành cùng mascot mèo Zing</li>
+                </ul>
+                <a className="btn btn-yellow" href="https://www.zingzingzangzang.com/#trang-chu" target="_blank" rel="noreferrer">Mở Flashcards <ArrowRight size={19} /></a>
+              </div>
+            </article>
+            <div className="next-worlds">
+              <div className="next-copy"><span className="section-kicker">ĐANG TRÊN BÀN VẼ</span><h3>Nhiều cuộc phiêu lưu mới<br />đang được ươm mầm.</h3><p>Studio tiếp tục khám phá các ý tưởng game về ngôn ngữ, tư duy và kỹ năng dành cho trẻ nhỏ.</p></div>
+              <div className="concept-grid">
+                <div><span>🧩</span><strong>Chơi để tư duy</strong><small>Ý tưởng game logic</small></div>
+                <div><span>🌏</span><strong>Khám phá thế giới</strong><small>Ý tưởng game kiến thức</small></div>
+                <div><span>🎵</span><strong>Nghe và cảm nhận</strong><small>Ý tưởng game âm thanh</small></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="section values-section">
           <div className="container">
             <div className="section-heading">
-              <span className="section-kicker">3 BƯỚC NHỎ CÙNG MÈO ZING</span>
-              <h2>Nhìn một chút, nghe một chút,<br /><span>nhớ thật lâu!</span></h2>
-              <p>Mỗi hoạt động được chia thành những bước ngắn gọn để bé luôn cảm thấy nhẹ nhàng và hào hứng.</p>
+              <span className="section-kicker">ĐIỀU CHÚNG MÌNH TIN TƯỞNG</span>
+              <h2>Game hay bắt đầu từ<br /><span>cảm xúc thật.</span></h2>
             </div>
-            <div className="steps-grid">
-              {learningSteps.map(({icon: Icon, ...step}, index) => (
-                <article className={`step-card step-${step.tone}`} key={step.number}>
-                  <span className="step-number">{step.number}</span><span className="step-icon"><Icon /></span>
-                  <h3>{step.title}</h3><p>{step.description}</p>
-                  {index < learningSteps.length - 1 && <ChevronRight className="step-arrow" aria-hidden="true" />}
-                </article>
-              ))}
+            <div className="values-grid">
+              {values.map(({icon: Icon, ...value}) => <article className={`value-card value-${value.tone}`} key={value.title}><span><Icon /></span><h3>{value.title}</h3><p>{value.text}</p></article>)}
             </div>
           </div>
         </section>
 
-        <section id="bo-the" className="section cards-section">
-          <div className="container cards-layout">
-            <div className="cards-copy">
-              <span className="section-kicker">BỘ THẺ ĐẦU TIÊN</span>
-              <h2>Chạm vào từng thẻ,<br /><span>gọi tên thế giới!</span></h2>
-              <p>Từ quả táo đỏ đến chú ong nhỏ, những hình ảnh quen thuộc giúp bé kết nối từ mới với thế giới xung quanh.</p>
-              <div className="cards-points">
-                <div><Check /> Hình minh họa lớn, rõ ràng</div><div><Check /> Từ tiếng Anh ngắn gọn, dễ đọc</div><div><Check /> Chủ đề gần gũi với bé</div>
-              </div>
-              <p className="demo-note"><MousePointer2 size={17} /> Chọn một thẻ bên cạnh để xem thử</p>
+        <section id="cach-lam-game" className="section process-section">
+          <div className="container process-layout">
+            <div className="process-intro">
+              <span className="section-kicker">CÁCH CHÚNG MÌNH LÀM GAME</span>
+              <h2>Từ một câu hỏi nhỏ<br />đến <span>một thế giới vui.</span></h2>
+              <p>Chúng mình kết hợp giáo dục, thiết kế và công nghệ trong một quy trình gọn gàng, luôn đặt trải nghiệm của trẻ ở trung tâm.</p>
+              <div className="team-pill"><Users /><span><strong>Một đội ngũ đa kỹ năng</strong>Thiết kế · Nội dung · Công nghệ</span></div>
             </div>
-            <div className="flashcard-stage" aria-live="polite">
-              <div className={`big-flashcard ${sampleCards[activeCard].tone}`}>
-                <span className="card-star">★</span><span className="card-emoji" role="img" aria-label={sampleCards[activeCard].meaning}>{sampleCards[activeCard].emoji}</span>
-                <strong>{sampleCards[activeCard].word}</strong><small>{sampleCards[activeCard].meaning}</small>
-                <button className="sound-button" aria-label={`Nghe từ ${sampleCards[activeCard].word}`}><Volume2 /></button>
-              </div>
-              <div className="card-tabs" aria-label="Chọn thẻ mẫu">
-                {sampleCards.map((card, index) => <button className={activeCard === index ? 'active' : ''} onClick={() => setActiveCard(index)} key={card.word} aria-label={`Xem thẻ ${card.word}`} aria-pressed={activeCard === index}>{card.emoji}</button>)}
-              </div>
+            <div className="process-list">
+              {process.map((item, index) => <div className="process-item" key={item.number}><span className="process-number">{item.number}</span><div><strong>{item.title}</strong><p>{item.text}</p></div>{index < process.length - 1 && <span className="process-line" />}</div>)}
             </div>
           </div>
         </section>
 
-        <section id="tro-choi" className="section games-section">
-          <div className="container">
-            <div className="section-heading">
-              <span className="section-kicker">VỪA HỌC VỪA CHƠI</span>
-              <h2>Trò chơi nhỏ,<br /><span>niềm vui thật to!</span></h2>
-              <p>Những ý tưởng hoạt động giúp giờ làm quen với từ mới thêm nhiều tiếng cười.</p>
+        <section id="lien-he" className="contact-section">
+          <div className="container contact-panel">
+            <span className="contact-star star-left">★</span><span className="contact-star star-right">✦</span>
+            <div className="contact-copy">
+              <span className="section-kicker">KẾT NỐI VỚI STUDIO</span>
+              <h2>Cùng tạo nên một<br />thế giới thật vui!</h2>
+              <p>Bạn muốn hợp tác, chia sẻ ý tưởng hoặc chỉ đơn giản là nói lời chào? Chúng mình rất vui được lắng nghe.</p>
+              <div className="contact-actions"><a className="btn btn-yellow" href="mailto:hello@zingzingzangzang.com"><Mail size={18} /> Gửi email cho chúng mình</a><span><MapPin size={18} /> Hà Nội, Việt Nam</span></div>
             </div>
-            <div className="games-grid">
-              {experiences.map((game, index) => <article className={`game-card game-${index + 1}`} key={game.title}><span className="game-number">0{index + 1}</span><span className="game-emoji">{game.emoji}</span><h3>{game.title}</h3><p>{game.text}</p><span className="game-link">Khám phá ý tưởng <ChevronRight size={16} /></span></article>)}
-            </div>
-          </div>
-        </section>
-
-        <section id="ve-chung-minh" className="section story-section">
-          <div className="container story-layout">
-            <div className="mascot-wrap">
-              <span className="mascot-spark spark-one">★</span><span className="mascot-spark spark-two">✦</span><span className="mascot-spark spark-three">●</span><div className="mascot-sun" />
-              <Image className="mascot-image" src="/images/zing-cat.png" alt="Mèo Zing đang vui vẻ đọc sách" width={1254} height={1254} />
-            </div>
-            <div className="story-copy">
-              <span className="section-kicker">XIN CHÀO, MÌNH LÀ ZING!</span>
-              <h2>Người bạn nhỏ đồng hành<br />trong mỗi <span>giờ học vui.</span></h2>
-              <p>Zing Zing Zang Zang được xây dựng với mong muốn mang đến trải nghiệm làm quen tiếng Anh gần gũi, giàu hình ảnh và đầy niềm vui cho trẻ nhỏ.</p>
-              <p>Chúng mình tin rằng sự tò mò là khởi đầu của việc học. Vì thế, mỗi tấm thẻ và hoạt động đều hướng tới cảm giác: bé muốn nhìn thêm, nghe thêm và khám phá thêm.</p>
-              <div className="story-values"><div><Star fill="currentColor" /> Tươi sáng</div><div><Heart fill="currentColor" /> Gần gũi</div><div><Sparkles /> Khơi gợi tò mò</div></div>
-            </div>
-          </div>
-        </section>
-
-        <section className="final-cta">
-          <div className="container final-panel">
-            <span className="final-star final-star-one">★</span><span className="final-star final-star-two">★</span>
-            <div className="final-copy"><span className="section-kicker">SẴN SÀNG CÙNG MÈO ZING?</span><h2>Mở thẻ ra,<br />mở cả thế giới!</h2><p>Một hành trình học tiếng Anh đầy màu sắc đang chờ bé khám phá.</p><a className="btn btn-yellow" href="#bo-the">Bắt đầu khám phá <ArrowRight size={19} /></a></div>
-            <Image className="final-mascot" src="/images/zing-cat.png" alt="" width={1254} height={1254} />
+            <Image className="contact-cat" src="/images/zing-cat.png" alt="" width={1254} height={1254} />
           </div>
         </section>
       </main>
 
       <footer className="footer">
         <div className="container footer-grid">
-          <div className="footer-intro"><Brand footer /><p>Thế giới học tiếng Anh vui nhộn, nơi trí tò mò được nuôi dưỡng qua từng hình ảnh và trò chơi.</p></div>
-          <div className="footer-column"><h3>Khám phá</h3><a href="#cach-hoc">Cách học</a><a href="#bo-the">Bộ thẻ</a><a href="#tro-choi">Trò chơi</a></div>
-          <div className="footer-column"><h3>Thông tin</h3><a href="#ve-chung-minh">Về chúng mình</a><a href="/privacy-policy">Chính sách riêng tư</a></div>
-          <div className="footer-column"><h3>Liên hệ</h3><a href="mailto:hello@zingzingzangzang.com">hello@zingzingzangzang.com</a><span>zingzingzangzang.com</span></div>
+          <div className="footer-intro"><Brand footer /><p>Studio game tại Hà Nội xây dựng những trải nghiệm học tập vui nhộn và đầy màu sắc cho trẻ em.</p></div>
+          <div className="footer-column"><h3>Studio</h3><a href="#ve-studio">Về chúng mình</a><a href="#cach-lam-game">Cách làm game</a><a href="#lien-he">Liên hệ</a></div>
+          <div className="footer-column"><h3>Sản phẩm</h3><a href="https://www.zingzingzangzang.com/#trang-chu" target="_blank" rel="noreferrer">Flashcards</a><a href="#san-pham">Dự án tiếp theo</a></div>
+          <div className="footer-column"><h3>Thông tin</h3><span><MapPin size={15} /> Hà Nội, Việt Nam</span><a href="mailto:hello@zingzingzangzang.com">hello@zingzingzangzang.com</a><a href="/privacy-policy">Chính sách riêng tư</a></div>
         </div>
-        <div className="container footer-bottom"><span>© {new Date().getFullYear()} Zing Zing Zang Zang.</span><span>Làm bằng niềm vui cho những bạn nhỏ ham học.</span></div>
+        <div className="container footer-bottom"><span>© {new Date().getFullYear()} Zing Zing Zang Zang.</span><span>Made with joy in Hanoi, Vietnam.</span></div>
       </footer>
     </>
   );

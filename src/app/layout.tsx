@@ -3,12 +3,12 @@ import './globals.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://zingzingzangzang.com'),
-  title: 'Zing Zing Zang Zang | Flashcards tiếng Anh cho bé',
-  description: 'Cùng mèo Zing nhìn hình, nghe từ và vui học tiếng Anh qua những bộ thẻ đầy màu sắc.',
+  title: 'Zing Zing Zang Zang | Game Studio tại Hà Nội',
+  description: 'Studio game tại Hà Nội phát triển những trải nghiệm tương tác vui nhộn, giàu hình ảnh và thân thiện với trẻ em.',
   openGraph: {
-    title: 'Zing Zing Zang Zang | Flashcards tiếng Anh cho bé',
-    description: 'Mỗi tấm thẻ, một điều kỳ diệu!',
-    images: ['/images/zingzing-banner.png'],
+    title: 'Zing Zing Zang Zang | Game Studio tại Hà Nội',
+    description: 'Chúng mình làm game để mỗi giờ học thành một cuộc phiêu lưu.',
+    images: ['/images/zingzing-logo.jpg'],
     locale: 'vi_VN',
     type: 'website',
   },
